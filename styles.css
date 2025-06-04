@@ -1,0 +1,48 @@
+:root {
+
+  --spg-100: 0.5rem;
+  --spg-200: 1rem;
+  --spg-300: 1.5rem;
+  --spg-400: 2rem;
+  --spg-600: 3rem;
+  --spg-1000: 5rem;
+  --spg-1200: 6rem;
+  --spg-1500: 7.5rem;
+  --spg-1600: 8rem;
+
+  --text-1: 3rem;
+  --text-2: 2rem;
+  --text-3: 1.5rem;
+  --text-4: 1.25rem;
+  --text-5: 1rem;
+  --text-6: 0.8125rem;  
+
+  --clr-white: #FFF;
+  --clr-black: #000;
+  --clr-grey-600: #3D6666;
+  --clr-grey-550: #547878;
+  --clr-grey-500: #5E7A7D;
+  --clr-grey-400: #7F9D9F;
+  --clr-grey-300: #9EBBBD;
+  --clr-grey-200: #C5E4E7;
+  --clr-grey-50: #F3F9FA;
+
+  --clr-green-900: #00474B;
+  --clr-green-800: #085C61;
+  --clr-green-750: #0D686D;
+  --clr-green-400: #26C2AE;
+  --clr-green-200: #9FE8DF;
+
+  --clr-orange-400: #E17052;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100svh;
+  min-height: 100vh;
+}
