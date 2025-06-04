@@ -42,7 +42,18 @@
   box-sizing: border-box;
 }
 
+
 body {
   min-height: 100svh;
   min-height: 100vh;
+  font-family: "Space Mono", monospace;
+  background: var(--clr-grey-200);
+  place-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
 }
