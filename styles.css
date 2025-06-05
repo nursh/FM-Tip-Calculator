@@ -48,7 +48,7 @@ body {
   min-height: 100vh;
   font-family: "Space Mono", monospace;
   background: var(--clr-grey-200);
-  place-content: center;
+  place-items: center;
   margin: 0;
   padding: 0;
 }
@@ -56,4 +56,37 @@ body {
 img {
   display: block;
   max-width: 100%;
+}
+
+input {
+  text-align: right;
+  padding: var(--spg-100) var(--spg-200);
+  font-size: var(--text-3);
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  color: var(--clr-green-900);
+  line-height: 1.5;
+  background-color: var(--clr-grey-50);
+  background-image: var(--bg-img);
+  background-repeat: no-repeat;
+  background-position-x: var(--spg-200);
+  background-position-y: 50%;
+  border: none;
+}
+
+#bill {
+  --bg-img: url('./images/icon-dollar.svg')
+}
+
+#people {
+  --bg-img: url('./images/icon-person.svg');
+}
+
+input:focus-visible {
+  outline: 2px solid var(--clr-green-400);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
 }
