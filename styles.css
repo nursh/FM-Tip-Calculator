@@ -48,6 +48,7 @@ body {
   min-height: 100vh;
   font-family: "Space Mono", monospace;
   background: var(--clr-grey-200);
+  display: grid;
   place-items: center;
   margin: 0;
   padding: 0;
@@ -58,7 +59,7 @@ img {
   max-width: 100%;
 }
 
-input {
+input[type="number"] {
   text-align: right;
   padding: var(--spg-100) var(--spg-200);
   font-size: var(--text-3);
@@ -89,4 +90,36 @@ input:focus-visible {
 .form-group {
   display: flex;
   flex-direction: column;
+  gap: var(--spg-100);
+}
+
+.radio-groups {
+  display: flex;
+  gap: var(--spg-400);
+}
+
+input[type="radio"] {
+  appearance: none;
+  display: none;
+}
+
+input[type="radio"]:checked + label {
+  background: var(--clr-green-400);
+  color: var(--clr-green-900);
+}
+
+input[type="radio"] + label {
+  background: var(--bg-clr, var(--clr-green-900));
+  color: var(--txt-clr, var(--clr-white));
+  font-size: var(--text-3);
+  font-weight: 700;
+  line-height: 1.5;
+  display: inline-block;
+  text-align: center;
+  width: 9rem;
+}
+
+label[for="custom"] {
+  --bg-clr: var(--clr-grey-50);
+  --txt-clr: var(--clr-grey-500);
 }
