@@ -85,6 +85,10 @@ form {
   padding-inline: var(--spg-100);
 }
 
+form > *+* {
+  margin-block-start: var(--default-spg, var(--spg-400));
+}
+
 input[type="number"] {
   text-align: right;
   padding: var(--spg-100) var(--spg-200);
@@ -141,9 +145,8 @@ input[type="radio"] + label {
   font-size: var(--text-3);
   font-weight: 700;
   line-height: 1.5;
-  display: inline-block;
   text-align: center;
-  width: 9rem;
+  display: inherit;
 }
 
 label[for="custom"] {
