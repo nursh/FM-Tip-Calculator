@@ -34,6 +34,8 @@
   --clr-green-200: #9FE8DF;
 
   --clr-orange-400: #E17052;
+
+  --border-radius: 0.3125rem;
 }
 
 *,
@@ -103,6 +105,7 @@ input[type="number"] {
   background-position-x: var(--spg-200);
   background-position-y: 50%;
   border: none;
+  border-radius: var(--border-radius);
 }
 
 #bill {
@@ -127,6 +130,7 @@ input:focus-visible {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--spg-400);
+  --default-spg: var(--spg-100);
 }
 
 input[type="radio"] {
@@ -147,6 +151,7 @@ input[type="radio"] + label {
   line-height: 1.5;
   text-align: center;
   display: inherit;
+  border-radius: var(--border-radius);
 }
 
 label[for="custom"] {
@@ -176,11 +181,36 @@ label[for="custom"] {
   background: var(--clr-green-900);
 }
 
-.tip,
-.total {
+.calculation > *+* {
+  margin-block-start: var(--default-spg, var(--spg-300));
+}
+
+.amount-display {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.amount-display p {
+  display: flex;
+  flex-direction: column;
+}
+
+.amount-label span {
+  font-size: var(--font-sz);
+  color: var(--font-clr);
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.amount-label span:first-child {
+  --font-sz: var(--text-5);
+  --font-clr: var(--clr-white);
+}
+
+.amount-label span:last-child {
+  --font-sz: var(--text-6);
+  --font-clr: var(--clr-grey-400);
 }
 
 button {
@@ -192,6 +222,7 @@ button {
   font-weight: 700;
   line-height: 1.5;
   font-size: var(--text-3);
+  --default-spg: var(--spg-400);
 }
 
 .amount {
