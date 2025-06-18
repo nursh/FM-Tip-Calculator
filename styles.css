@@ -89,7 +89,7 @@ form {
 }
 
 form > *+* {
-  margin-block-start: var(--default-spg, var(--spg-400));
+  margin-block-start: var(--block-start-spg, var(--spg-400));
 }
 
 input[type="number"] {
@@ -104,9 +104,10 @@ input[type="number"] {
   background-color: var(--clr-grey-50);
 }
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
   appearance: none;
+  margin: 0;
 }
 
 .form-group input[type="number"] {
@@ -138,8 +139,8 @@ input:focus-visible {
 .radio-groups {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--spg-400);
-  --default-spg: var(--spg-100);
+  gap: var(--spg-200);
+  --block-start-spg: var(--spg-100);
 }
 
 input[type="radio"] {
@@ -179,7 +180,7 @@ input[type="radio"] + label {
 }
 
 .error-input {
-    outline: 2px solid var(--clr-orange-400);
+  outline: 2px solid var(--clr-orange-400);
 }
 
 .error-text {
@@ -195,7 +196,7 @@ input[type="radio"] + label {
 }
 
 .calculation > *+* {
-  margin-block-start: var(--default-spg, var(--spg-300));
+  margin-block-start: var(--block-start-spg, var(--spg-300));
 }
 
 .amount-display {
@@ -235,7 +236,7 @@ button {
   font-weight: 700;
   line-height: 1.5;
   font-size: var(--text-3);
-  --default-spg: var(--spg-400);
+  --block-start-spg: var(--spg-400);
 }
 
 .amount {
@@ -260,9 +261,19 @@ button {
     margin-inline: auto;
     padding: var(--spg-600) var(--spg-1000);
     border-radius: var(--border-radius-lg);
+    gap: var(--spg-600);
   }
 
   .radio-groups {
     grid-template-columns: repeat(3, 1fr);
+    gap: var(--spg-200 );
+  }
+
+  form > *+* {
+    margin-block-start: var(--block-start-spg, var(--spg-300));
+  }
+
+  .amount {
+    font-size: var(--text-1);
   }
 }
