@@ -104,6 +104,11 @@ input[type="number"] {
   background-color: var(--clr-grey-50);
 }
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  appearance: none;
+}
+
 .form-group input[type="number"] {
   padding: var(--spg-100) var(--spg-200);
   background-image: var(--bg-img);
@@ -166,8 +171,6 @@ input[type="radio"] + label {
   text-align: center;
   color: var(--clr-grey-550);
 }
-
-
 
 .people-label {
   display: flex;
