@@ -35,7 +35,8 @@
 
   --clr-orange-400: #E17052;
 
-  --border-radius: 0.3125rem;
+  --border-radius-sm: 0.3125rem;
+  --border-radius-lg: 0.9376rem;
 }
 
 *,
@@ -64,8 +65,8 @@ main {
   display: flex;
   flex-direction: column;
   gap: var(--spg-300);
-  border-top-left-radius: 0.9375rem;
-  border-top-right-radius: 0.9375rem;
+  border-top-left-radius: var(--border-radius-lg);
+  border-top-right-radius: var(--border-radius-lg);
 }
 
 p {
@@ -99,7 +100,7 @@ input[type="number"] {
   color: var(--clr-green-900);
   line-height: 1.5;
   border: none;
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-sm);
   background-color: var(--clr-grey-50);
 }
 
@@ -154,7 +155,7 @@ input[type="radio"] + label {
   line-height: 1.5;
   text-align: center;
   display: inherit;
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-sm);
 }
 
 .radio-group input[type="number"] {
@@ -238,4 +239,27 @@ button {
   color: var(--clr-green-400);
   font-size: var(--text-2);
   font-weight: 700;
+}
+
+@media (width >= 40rem) {
+
+  body {
+    display: grid;
+    place-content: center;
+  }
+
+  header {
+    margin-block: 0 var(--spg-600);
+  }
+
+  main {
+    max-width: 38rem;
+    margin-inline: auto;
+    padding: var(--spg-600) var(--spg-1000);
+    border-radius: var(--border-radius-lg);
+  }
+
+  .radio-groups {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }

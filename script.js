@@ -1,22 +1,44 @@
-const total = document.getElementById('total-amount');
-const tipAmount = document.getElementById('tip-amount');
 
+// Amount Text
+const totalText = document.getElementById('total-amount');
+const tipAmountText = document.getElementById('tip-amount');
+
+
+// Form Elements
 const form = document.querySelector('form');
 const bill = form.elements.bill;
-const tip = form.elements.tip;
+const tipInputs = form.elements.tip;
 const numberOfPeople = form.elements.people;
 
 
-function calculateTip() {
+// Variables
+let billAmount;
+let tipPercent;
+let customTip;
+let people;
 
-}
 
 function calculateTotal() {
-  const total = bill.value + (tip.value * bill.value)
+  const tipAmount = (tipPercent / 100) * billAmount;
+  const tipPerPerson = tipAmount / people;
+  const total = (billAmount + tipAmount) / people;
   console.log(total);
+}
+
+function renderTotal() {
+  
 }
 
 bill.addEventListener('change', handleChange);
 function handleChange(evt) {
-  total.textContent = evt.target.value;
+  billAmount = parseInt(evt.target.value);
+  totalText.textContent = tipPercent === 0
+    ? `$${billAmount}`
+    : `$${billAmount * tipPercent}`;
 }
+
+function handleTipAmount(evt) {
+  tipPercent = parseInt(evt.target.value);
+}
+
+tipInputs.forEach((radioInput) => radioInput.addEventListener('change', handleTipAmount));
