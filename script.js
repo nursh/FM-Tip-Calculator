@@ -4,6 +4,9 @@ const totalText = document.getElementById('total-amount');
 const tipAmountText = document.getElementById('tip-amount');
 const customInput = document.getElementById('custom');
 
+const errorText = document.getElementById('error-text');
+const resetButton = document.getElementById('reset');
+
 
 // Form Elements
 const form = document.querySelector('form');
@@ -15,46 +18,66 @@ const numberOfPeople = form.elements.people;
 // Variables
 let billAmount;
 let tipPercent;
-let customTip;
 let people;
 
 
 function handleInputChange(evt) {
   const value = parseInt(evt.target.value, 10);
-  console.log(evt.target.name);
   switch(evt.target.name) {
-    case 'bill':
+    case 'bill': {
       billAmount = value;
-      return;
+      break;
+    }
 
-    case 'tip':
+    case 'tip': {
       tipPercent = value;
-      return;
+      customInput.value = '';
+      break;
+    }
 
-    case 'custom':
-      customTip = value;
-      return;
+    case 'custom': {
+      deselectRadioButtons();
+      tipPercent = value;
+      break;
+    }
 
-    case 'people':
+    case 'people': {
       people = value;
-      return;
+      break;
+    }
 
     default:
-      return;
+      break;
+  }
+  
+  const [tip, totalAmount] = calculateTotal(people);
+
+  if (tip && totalAmount) {
+    renderCalculation(tip, totalAmount);
   }
 }
 
 
-
-function calculateTotal() {
-  const tipAmount = (tipPercent / 100) * billAmount;
-  const tipPerPerson = tipAmount / people;
-  const total = (billAmount + tipAmount) / people;
-  console.log(total);
+function deselectRadioButtons() {
+  tipInputs.forEach((input) => input.checked = false);
 }
 
-function renderTotal() {
+function calculateTotal(people) {
+  if (people && people > 0) {
+    errorText.style.visibility = 'hidden';
+    const tipAmount = (tipPercent / 100) * billAmount;
+    const tipPerPerson = (tipAmount / people);
+    const totalPerPerson = (billAmount + tipAmount) / people;
+    
+    return [tipPerPerson, totalPerPerson];
+  }
   
+  errorText.style.visibility = 'visible';
+}
+
+function renderCalculation(tip = 0, totalAmount = 0) {
+  tipAmountText.textContent = `$${parseFloat(tip).toFixed(2)}`;
+  totalText.textContent = `$${parseFloat(totalAmount).toFixed(2)}`;
 }
 
 
@@ -62,3 +85,7 @@ bill.addEventListener('change', handleInputChange);
 tipInputs.forEach((radioInput) => radioInput.addEventListener('change', handleInputChange));
 customInput.addEventListener('change', handleInputChange);
 numberOfPeople.addEventListener('change', handleInputChange);
+resetButton.addEventListener('click', () => {
+  form.reset();
+  renderCalculation();
+})

@@ -185,8 +185,9 @@ input[type="radio"] + label {
   outline: 2px solid var(--clr-orange-400);
 }
 
-.error-text {
+#error-text {
   color: var(--clr-orange-400);
+  visibility: hidden;
 }
 
 .calculation {
@@ -247,6 +248,8 @@ button {
   font-size: var(--text-2);
   font-weight: 700;
 }
+
+
 
 @media (width >= 40rem) {
 

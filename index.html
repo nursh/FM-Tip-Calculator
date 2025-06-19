@@ -60,7 +60,7 @@
       <div class="form-group">
         <div class="people-label">
           <label for="people">Number of People</label>
-          <p class="error-text">Can&apos;t be zero</p>
+          <p id="error-text">Can&apos;t be zero</p>
         </div>
         <input type="number" name="people" id="people" />
       </div>
@@ -72,16 +72,16 @@
           <span>Tip Amount</span>
           <span>/ person</span>
         </p>
-        <p id="tip-amount" class="amount">0.00</p>
+        <p id="tip-amount" class="amount">$0.00</p>
       </div>
       <div class="amount-display">
         <p class="amount-label">
           <span>Total</span>
           <span>/ person</span>
         </p>
-        <div id="total-amount" class="amount">0.00</div>
+        <div id="total-amount" class="amount">$0.00</div>
       </div>
-      <button>reset</button>
+      <button id="reset">reset</button>
     </div>
   </main>
   <script src="./script.js"></script>
