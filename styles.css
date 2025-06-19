@@ -162,10 +162,12 @@ input[type="radio"] + label {
   text-align: center;
   display: inherit;
   border-radius: var(--border-radius-sm);
+  padding-block: var(--spg-100);
 }
 
 .radio-group input[type="number"] {
   width: 100%;
+  padding-block: var(--spg-100);
 }
 
 .radio-group input[type="number"]::placeholder {
@@ -236,6 +238,7 @@ button {
   font-weight: 700;
   line-height: 1.5;
   font-size: var(--text-3);
+  border-radius: var(--border-radius-sm);
   --block-start-spg: var(--spg-400);
 }
 
@@ -275,5 +278,37 @@ button {
 
   .amount {
     font-size: var(--text-1);
+  }
+
+  button {
+    padding-block: var(--spg-100);
+  }
+}
+
+@media (width >= 60rem) {
+
+  main {
+    max-width: 57.5rem;
+    padding: var(--spg-400);
+    flex-direction: row;
+    border-radius: 1.5625rem;
+  }
+
+  form,
+  .calculation {
+    flex: 1;
+  }
+
+  form {
+    --block-start-spg: var(--spg-600);
+    padding-block: var(--spg-200);
+  }
+
+  .calculation {
+    padding: var(--spg-300) var(--spg-400);
+  }
+
+  button {
+    --block-start-spg: auto;
   }
 }
