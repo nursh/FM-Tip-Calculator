@@ -36,7 +36,6 @@ function handleInputChange(evt) {
     }
 
     case 'custom': {
-      deselectRadioButtons();
       tipPercent = value;
       break;
     }
@@ -46,6 +45,7 @@ function handleInputChange(evt) {
         errorText.style.visibility = 'visible';
         people = 0;
       } else {
+        errorText.style.visibility = 'hidden';
         people = value;
       }
       break;
@@ -55,6 +55,7 @@ function handleInputChange(evt) {
       break;
   }
 
+  resetButton.removeAttribute('disabled');
   if (billAmount && people && billAmount > 0 && people > 0) {
     const [tip, totalAmount] = calculateTotal();
     renderCalculation(tip, totalAmount);
@@ -89,9 +90,11 @@ function clearCalcVariables() {
 bill.addEventListener('change', handleInputChange);
 tipInputs.forEach((radioInput) => radioInput.addEventListener('change', handleInputChange));
 customInput.addEventListener('change', handleInputChange);
+customInput.addEventListener('focus', deselectRadioButtons);
 numberOfPeople.addEventListener('change', handleInputChange);
 resetButton.addEventListener('click', () => {
   form.reset();
   clearCalcVariables();
   renderCalculation();
+  resetButton.setAttribute('disabled', true);
 })
