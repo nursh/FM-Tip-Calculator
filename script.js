@@ -42,17 +42,21 @@ function handleInputChange(evt) {
     }
 
     case 'people': {
-      people = value;
+      if (isNaN(value)) {
+        errorText.style.visibility = 'visible';
+        people = 0;
+      } else {
+        people = value;
+      }
       break;
     }
 
     default:
       break;
   }
-  
-  const [tip, totalAmount] = calculateTotal(people);
 
-  if (tip && totalAmount) {
+  if (billAmount && people && billAmount > 0 && people > 0) {
+    const [tip, totalAmount] = calculateTotal();
     renderCalculation(tip, totalAmount);
   }
 }
@@ -62,22 +66,23 @@ function deselectRadioButtons() {
   tipInputs.forEach((input) => input.checked = false);
 }
 
-function calculateTotal(people) {
-  if (people && people > 0) {
-    errorText.style.visibility = 'hidden';
-    const tipAmount = (tipPercent / 100) * billAmount;
-    const tipPerPerson = (tipAmount / people);
-    const totalPerPerson = (billAmount + tipAmount) / people;
-    
-    return [tipPerPerson, totalPerPerson];
-  }
+function calculateTotal() {
+  const tipAmount = tipPercent ? (tipPercent / 100) * billAmount : 0;
+  const tipPerPerson = (tipAmount / people);
+  const totalPerPerson = (billAmount + tipAmount) / people;
   
-  errorText.style.visibility = 'visible';
+  return [tipPerPerson, totalPerPerson];
 }
 
 function renderCalculation(tip = 0, totalAmount = 0) {
   tipAmountText.textContent = `$${parseFloat(tip).toFixed(2)}`;
   totalText.textContent = `$${parseFloat(totalAmount).toFixed(2)}`;
+}
+
+function clearCalcVariables() {
+  tipPercent = 0;
+  billAmount = 0;
+  people = 0;
 }
 
 
@@ -87,5 +92,6 @@ customInput.addEventListener('change', handleInputChange);
 numberOfPeople.addEventListener('change', handleInputChange);
 resetButton.addEventListener('click', () => {
   form.reset();
+  clearCalcVariables();
   renderCalculation();
 })

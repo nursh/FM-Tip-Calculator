@@ -4,6 +4,7 @@
   --spg-200: 1rem;
   --spg-300: 1.5rem;
   --spg-400: 2rem;
+  --spg-500: 2.5rem;
   --spg-600: 3rem;
   --spg-1000: 5rem;
   --spg-1200: 6rem;
@@ -116,6 +117,11 @@ input::-webkit-outer-spin-button {
   background-repeat: no-repeat;
   background-position-x: var(--spg-200);
   background-position-y: 50%;
+}
+
+.form-group input[type="number"]::placeholder {
+  color: var(--clr-green-900);
+  opacity: 0.35;
 }
 
 #bill {
@@ -303,12 +309,12 @@ button {
   }
 
   form {
-    --block-start-spg: var(--spg-600);
+    --block-start-spg: var(--spg-500);
     padding-block: var(--spg-200);
   }
 
   .calculation {
-    padding: var(--spg-300) var(--spg-400);
+    padding: var(--spg-500) var(--spg-400);
   }
 
   button {
